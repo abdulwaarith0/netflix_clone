@@ -1,6 +1,7 @@
 import React from 'react';
 import "./featured.scss";
-import pexelsImage from "../assets/pexels_med.jpg";
+import pexelsImage from "../assets/pexel_med.webp";
+import featuredImage from "../assets/featured.webp";
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
 
 
@@ -35,7 +36,7 @@ value="sci-fi">Sci-fi</option>
             <img src={pexelsImage} alt="" />
             <div className="info">
                 <img
-                    src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
+                    src={featuredImage}
                     alt=""
                 />
                 <span className='desc'>

@@ -31,7 +31,7 @@ const Navbar = () => {
                 </div>
                 <div className="right">
                     <Search className='icon' />
-                    <span>Kid</span>
+                    <span>KID</span>
                     <Notifications className='icon' />
                     <img src={pexelsImage} alt=""
                     />
