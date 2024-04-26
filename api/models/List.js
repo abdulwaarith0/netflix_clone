@@ -1,4 +1,4 @@
-const mongoose = require("mongooose");
+const mongoose = require("mongoose");
 
 const ListSchema = new mongoose.Schema({
     title: { type: String, required: true, unique: true },
@@ -8,4 +8,4 @@ const ListSchema = new mongoose.Schema({
 }, {});
 
 
-module.exports = mongoose.model("Movie", MovieSchema);
+module.exports = mongoose.model("List", ListSchema);
