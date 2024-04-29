@@ -3,6 +3,8 @@ import "./navbar.scss";
 import netflixImage from "../assets/netflix3.png";
 import pexelsImage from "../assets/pexels.jpg";
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -15,17 +17,21 @@ const Navbar = () => {
         }
     };
 
-    console.log(isScrolled);
-
     return (
-        <div className={isScrolled ? "navbar   scrolled" : "navbar" }>
+        <div className={isScrolled ? "navbar   scrolled" : "navbar"}>
             <div className="container">
                 <div className="left">
                     <img src={netflixImage}
                         alt="" />
-                    <span>Homepage</span>
-                    <span>Series</span>
-                    <span>Movies</span>
+                    <Link to="/" className="link">
+                        <span>Home</span>
+                    </Link>
+                    <Link to="/series" className="link">
+                        <span>Series</span>
+                    </Link>
+                    <Link to="/movies" className="link">
+                        <span>Movies</span>
+                    </Link>
                     <span>News and Popular</span>
                     <span>My List</span>
                 </div>

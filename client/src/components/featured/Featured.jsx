@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { api, BASE_URL } from '../../constants';
 import "./featured.scss";
-import pexelsImage from "../assets/pexel_med.webp";
-import featuredImage from "../assets/featured.webp";
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
 
 
 const Featured = ({ type }) => {
+    const [content, setContent] = useState({});
+
+    const getRandomContent = useCallback(async () => {
+        try {
+            const params = {
+                type: type || "",
+            };
+
+            const headers = {
+                Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNDE2MTU0MCwiZXhwIjoxNzE0NTkzNTQwfQ.Dq7Y8WsSvmFxZxrFyynGu4L9F5ymgK6QbGdp0sNJxFY",
+            };
+
+            const response = await api().get(`${BASE_URL}/movies/random?`, { params, headers });
+            setContent(response.data[0]);
+        } catch (err) {
+            console.log(err)
+        }
+    }, [type]);
+
+    useEffect(() => {
+        getRandomContent();
+    }, [getRandomContent]);
+
+
     return (
         <div className='featured'>
             {type && (
@@ -23,8 +47,8 @@ const Featured = ({ type }) => {
                         <option value="historical">Historical</option>
                         <option value="horror">Horror</option>
                         <option value="romance">Romance</option>
-                        <option 
-value="sci-fi">Sci-fi</option>
+                        <option
+                            value="sci-fi">Sci-fi</option>
                         <option value="thriller">Thriller</option>
                         <option value="western">Western</option>
                         <option value="animation">Animation</option>
@@ -33,15 +57,14 @@ value="sci-fi">Sci-fi</option>
                     </select>
                 </div>
             )}
-            <img src={pexelsImage} alt="" />
+            <img src={content.img} alt="" />
             <div className="info">
                 <img
-                    src={featuredImage}
+                    src={content.imgTitle}
                     alt=""
                 />
                 <span className='desc'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, impedit dicta.
-                    Adipisci tempore vero mollitia voluptatum illo possimus pariatur laboriosam!
+                    {content.desc}
                 </span>
                 <div className="buttons">
                     <button className="play">

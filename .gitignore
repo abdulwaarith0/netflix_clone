@@ -1,2 +1,10 @@
 /node_modules
 /vite.config.js
+
+api/.env
+
+client/node_modules/.bin/
+
+client/node_modules/.vite/deps/\@material-ui_icons.js
+
+client/node_modules/

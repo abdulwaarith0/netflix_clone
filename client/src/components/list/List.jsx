@@ -5,7 +5,7 @@ import ListItem from '../listItem/ListItem';
 
 
 
-const List = () => {
+const List = ({ list }) => {
     const [isMoved, setIsMoved] = useState(false);
     const [slideNumber, setSlideNumber] = useState(0);
 
@@ -16,22 +16,22 @@ const List = () => {
         let distance = listRef.current.getBoundingClientRect().x - 50
 
         if (direction === "left" && slideNumber > 0) {
-            setSlideNumber(slideNumber - 1.2)
+            setSlideNumber(slideNumber - 1)
             listRef.current.style.transform = `
-            translateX(${250 + distance}px)`
+            translateX(${230 + distance}px)`
         }
 
-        if (direction === "right" && slideNumber < 0.3) {
+        if (direction === "right" && slideNumber < 10) {
             setSlideNumber(slideNumber + 1)
             listRef.current.style.transform = `
-            translateX(${-240 + distance}px)`
+            translateX(${-230 + distance}px)`
         }
     }
 
     return (
         <div className='list'>
             <span className="listTitle">
-                Continue to watch
+                {list.title}
             </span>
             <div className="wrapper">
                 <ArrowBackIosOutlined
@@ -43,16 +43,9 @@ const List = () => {
                     }}
                 />
                 <div className="container" ref={listRef}>
-                    <ListItem index={0} />
-                    <ListItem index={1} />
-                    <ListItem index={2} />
-                    <ListItem index={3} />
-                    <ListItem index={4} />
-                    <ListItem index={5} />
-                    <ListItem index={6} />
-                    <ListItem index={7} />
-                    <ListItem index={8} />
-                    <ListItem index={9} />
+                    {list.content.map((item, i) => (
+                        <ListItem key={i} index={i} item={item}  />
+                    ))};
 
                 </div>
                 <ArrowForwardIosOutlined

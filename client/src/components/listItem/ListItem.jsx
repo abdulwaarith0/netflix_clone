@@ -1,57 +1,84 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "./listItem.scss";
-import granImage from "../assets/gran.jpg";
-import trailerVid from "../assets/trailer.mp4";
-import { Add, PlayArrow, ThumbDownAltOutlined, ThumbUpAltOutlined } from '@material-ui/icons';
+import { api, BASE_URL } from '../../constants';
+import { Add, KeyboardArrowDown, PlayArrow, ThumbUpAltOutlined } from '@material-ui/icons';
 
 
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index, item }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [movie, setMovie] = useState({});
+
+    const getMovie = useCallback(async () => {
+        try {
+
+            const headers = {
+                Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNDE2MTU0MCwiZXhwIjoxNzE0NTkzNTQwfQ.Dq7Y8WsSvmFxZxrFyynGu4L9F5ymgK6QbGdp0sNJxFY",
+            };
+            const response = await api().get(`${BASE_URL}/movies/find/${item}`, { headers });
+            setMovie(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }, [item]);
+
+    useEffect(() => {
+        getMovie();
+    }, [getMovie]);
+
+
 
     return (
-        <div
-            className='listItem'
-            style={{ left: isHovered && index * 290 - 15 + index * 2.5 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <img
-                src={granImage}
-                alt=""
-            />
-            {isHovered && (
-                <>
-                    <video src={trailerVid}
-                        autoPlay={true}
-                        loop
-                    />
+        <Link to="/watch" state={{ movie: movie }}>
+            <div
+                className='listItem'
+                style={{ left: isHovered && index * 300 - 20 + index * 2.5 }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                <img
+                    src={movie.img}
+                    alt=""
+                />
+                {isHovered && (
+                    <>
+                        <video src={movie.trailer}
+                            autoPlay={true}
+                            loop
+                        />
 
-                    <div className="itemInfo">
-                        <div className="icons">
-                            <PlayArrow className='icon' />
-                            <Add className='icon' />
-                            <ThumbUpAltOutlined 
-                             className='icon '/>
-                            <ThumbDownAltOutlined className='icon' />
+                        <div className="itemInfo">
+                            <div className="icons">
+                                <PlayArrow className='icon_' />
+                                <Add className='icon' />
+                                <ThumbUpAltOutlined
+                                    className='icon ' />
+                                <KeyboardArrowDown
+                                    fontSize="large"
+                                    className='icon down' />
+                            </div>
+                            <div className="itemInfoTop">
+                                <span>{movie.year} |</span>
+                                <span
+                                    className='limit'>
+                                    +{movie.limit}
+                                </span>
+                                <span> | {movie.duration} | </span>
+                                <span className='genre'>
+                                    {movie.genre}
+                                </span>
+                            </div>
+                            <div className="desc">
+                                {movie.desc}
+                            </div>
                         </div>
-                        <div className="itemInfoTop">
-                            <span>1999 |</span>
-                            <span
-                                className='limit'>
-                                +16 
-                            </span>
-                            <span> | 1h 40m | </span>
-                            <span className='genre'> Action </span>
-                        </div>
-                        <div className="desc">
-                           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia facere nobis quo consectetur repellendus at!
-                        </div>
-                    </div>
 
-                </>
-            )}
-        </div>
+                    </>
+                )}
+            </div>
+        </Link>
     )
 }
 

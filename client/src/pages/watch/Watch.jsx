@@ -1,20 +1,31 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import "./watch.scss";
-import watchVid from "../../components/assets/watch.mp4";
 import { ArrowBackOutlined } from '@material-ui/icons';
 
 function Watch() {
+    const location = useLocation();
+
+    if (!location.state || !location.state.movie) {
+        return <Link to="/" >Redirecting to home...</Link>;
+    }
+
+    const { movie } = location.state;
+
     return (
         <div className='watch'>
-            <div className="back">
-                <ArrowBackOutlined />
-                Home
-            </div>
-            <video className='video' 
-            autoPlay progress controls 
-                src={watchVid}
+            <Link to="/" >
+                <div className="back">
+                    <ArrowBackOutlined />
+                    Home
+                </div>
+            </Link>
+            <video className='video'
+                autoPlay progress="true" controls
+                src={movie.trailer}
             />
         </div>
+
     )
 }
 

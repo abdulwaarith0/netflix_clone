@@ -5,7 +5,7 @@ const ListSchema = new mongoose.Schema({
     type: { type: String },
     genre: { type: String },
     content: { type: Array }
-}, {});
+}, { timestamps: true });
 
 
 module.exports = mongoose.model("List", ListSchema);
