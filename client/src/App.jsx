@@ -5,47 +5,33 @@ import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
 import { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext"
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 
 
 const App = () => {
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={user ? <Home /> :
-          <Register />} />
-      </Routes>
-      {
-        user && (
+        <Route path="/" element={user ? <Home /> : <Navigate to="/register" />} />
+
+        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+        <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+
+        {user && (
           <>
-            <Routes>
-              <Route path="/movies" element={<Home
-                type="movies" />} />
-            </Routes>
-            <Routes>
-              <Route path="/series" element={<Home
-                type="series" />} />
-            </Routes>
-            <Routes>
-              <Route path="/watch" element={<Watch />} />
-            </Routes>
+            <Route path="/movies" element={<Home type="movies" />} />
+            <Route path="/series" element={<Home type="series" />} />
+            <Route path="/watch" element={<Watch />} />
           </>
-        )
-      }
-      <Routes>
-        <Route path="/login" element={!user ?
-          <Login /> : <Home />} />
-      </Routes>
-      <Routes>
-        <Route path="/register" element={!user ?
-          <Register /> : <Home />} />
+        )}
       </Routes>
     </Router>
   );
 };
+
 
 
 export default App;

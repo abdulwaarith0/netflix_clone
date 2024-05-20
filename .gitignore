@@ -10,3 +10,5 @@ client/node_modules/.vite/deps/\@material-ui_icons.js
 client/node_modules/
 
 api/node_modules/
+
+.idea/
