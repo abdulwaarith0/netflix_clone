@@ -3,12 +3,14 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
+import { useContext } from "react";
+import { AuthContext } from "./authContext/AuthContext"
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 
 
 
 const App = () => {
-  const user = true;
+  const { user } = useContext(AuthContext)
 
   return (
     <Router>

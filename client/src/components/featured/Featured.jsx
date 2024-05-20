@@ -15,7 +15,7 @@ const Featured = ({ type }) => {
 
             const headers = {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNDE2MTU0MCwiZXhwIjoxNzE0NTkzNTQwfQ.Dq7Y8WsSvmFxZxrFyynGu4L9F5ymgK6QbGdp0sNJxFY",
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNjIzMzk0OCwiZXhwIjoxNzE2NjY1OTQ4fQ.6QTDAKhgWtU1xrORzHZN8FOI9t8IsfMloJGrKx2mO68",
             };
 
             const response = await api().get(`${BASE_URL}/movies/random?`, { params, headers });

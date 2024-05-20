@@ -13,10 +13,11 @@ const ListItem = ({ index, item }) => {
     const getMovie = useCallback(async () => {
         try {
 
+            const user = JSON.parse(localStorage.getItem("user"));
             const headers = {
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNDE2MTU0MCwiZXhwIjoxNzE0NTkzNTQwfQ.Dq7Y8WsSvmFxZxrFyynGu4L9F5ymgK6QbGdp0sNJxFY",
+                Authorization: user?.accessToken ? `Bearer ${user.accessToken}` : "",
             };
+
             const response = await api().get(`${BASE_URL}/movies/find/${item}`, { headers });
             setMovie(response.data);
         } catch (error) {
