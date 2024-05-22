@@ -10,7 +10,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 
 const App = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+  const user = true;
 
   return (
     <Router>
