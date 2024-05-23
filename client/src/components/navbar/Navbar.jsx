@@ -51,7 +51,10 @@ const Navbar = () => {
                             className="options">
                             <span>Settings</span>
                             <span
-                                onClick={() => dispatch(logout())}
+                                onClick={() => {
+                                    dispatch(logout())
+                                    localStorage.clear()
+                                }}
                             >
                                 Logout</span>
                         </div>
