@@ -58,8 +58,7 @@ router.get("/", verify, async (req, res) => {
                         }
                     }
                 ]);
-            }
-            else {
+            } else {
                 list = await List.aggregate([
                     { $sample: { size: 10 } },
                     {

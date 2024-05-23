@@ -9,16 +9,13 @@ const Featured = ({ type }) => {
 
     const getRandomContent = useCallback(async () => {
         try {
-            const params = {
-                type: type || "",
-            };
 
             const headers = {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNjIzMzk0OCwiZXhwIjoxNzE2NjY1OTQ4fQ.6QTDAKhgWtU1xrORzHZN8FOI9t8IsfMloJGrKx2mO68",
-            };
+                    "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+            }
 
-            const response = await api().get(`${BASE_URL}/movies/random?`, { params, headers });
+            const response = await api().get(`${BASE_URL}/movies/random?type=${type}`, { headers });
             setContent(response.data[0]);
         } catch (err) {
             console.log(err)
@@ -35,7 +32,7 @@ const Featured = ({ type }) => {
             {type && (
                 <div className="category">
                     <span>
-                        {type === "movies" ?
+                        {type === "movie" ?
                             "Movies" : "Series"}
                     </span>
                     <select name="genre" id="genre">
@@ -65,6 +62,7 @@ const Featured = ({ type }) => {
                 />
                 <span className='desc'>
                     {content.desc}
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam, quibusdam tenetur dolore in reiciendis quia soluta deserunt saepe esse.
                 </span>
                 <div className="buttons">
                     <button className="play">

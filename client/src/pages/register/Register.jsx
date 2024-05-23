@@ -2,22 +2,38 @@ import React, { useRef, useState } from 'react';
 import netflixImg from "../../components/assets/netflix3.png";
 import "./register.scss";
 import { ArrowForwardIosOutlined } from '@material-ui/icons';
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import { api, BASE_URL } from '../../constants';
 
 
 function Register() {
-    const [ email, setEmaiil ] = useState("");
-    const [ password, setPassword ] = useState("");
+    const [email, setEmaiil] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const navigate = useNavigate();
 
     const emailRef = useRef();
     const passwordRef = useRef();
+    const usernameRef = useRef();
+
+    const handleLoginClick = () => {
+        navigate("/login")
+    }
 
     const handleStart = () => {
         setEmaiil(emailRef.current.value);
     }
-    const handleFinish = () => {
+    const handleFinish = async (e) => {
+        e.preventDefault();
         setPassword(passwordRef.current.value);
+        setUsername(usernameRef.current.value);
+
+        try {
+            await api().post(`${BASE_URL}/auth/register`, { email, username, password });
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -28,9 +44,14 @@ function Register() {
                     <img className='logo'
                         src={netflixImg}
                         alt="" />
-                    <button className="loginButton">
-                        Sign In
-                    </button>
+                    <Link to="/"
+                        className="link">
+                        <span
+                            className="loginButton">
+                                Sign In
+                        </span>
+                    </Link>
+
                 </div>
             </div>
             <div className="container">
@@ -56,18 +77,21 @@ function Register() {
                             </button>
                         </div>
                     ) : (
-                            <form className="input">
-                                <input type="password"
-                                    placeholder='password'
-                                    ref={passwordRef}
-                                />
-                                <button
-                                    className='registerButton'
-                                    onClick={handleFinish}
-                                >
-                                    Membership
-                                </button>
-                            </form>
+                        <form className="input">
+                            <input type="username"
+                                placeholder="username"
+                                ref={usernameRef} />
+                            <input type="password"
+                                placeholder='password'
+                                ref={passwordRef}
+                            />
+                            <button
+                                className='registerButton'
+                                onClick={handleFinish}
+                            >
+                                Membership
+                            </button>
+                        </form>
                     )}
             </div>
         </div>

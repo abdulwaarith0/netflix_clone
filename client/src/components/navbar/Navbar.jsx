@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../authContext/AuthContext';
+import { logout } from '../../authContext/AuthActions';
 import "./navbar.scss";
 import netflixImage from "../assets/netflix3.png";
 import pexelsImage from "../assets/pexels.jpg";
@@ -8,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const { dispatch } = useContext(AuthContext);
 
     window.onscroll = () => {
         setIsScrolled(window.scrollY === 0 ?
@@ -47,7 +50,10 @@ const Navbar = () => {
                         <div
                             className="options">
                             <span>Settings</span>
-                            <span>Logout</span>
+                            <span
+                                onClick={() => dispatch(logout())}
+                            >
+                                Logout</span>
                         </div>
                     </div>
 

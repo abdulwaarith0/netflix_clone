@@ -15,8 +15,8 @@ const ListItem = ({ index, item }) => {
 
             const headers = {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEyNDliOThiY2I5ZjRhYmQyYzg1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNjIzMzk0OCwiZXhwIjoxNzE2NjY1OTQ4fQ.6QTDAKhgWtU1xrORzHZN8FOI9t8IsfMloJGrKx2mO68",
-            };
+                "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+          }
 
 
             const response = await api().get(`${BASE_URL}/movies/find/${item}`, { headers });

@@ -105,11 +105,9 @@ router.get("/random", verify, async (req, res) => {
 // GET ALL MOVIES
 router.get("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
- 
         try {
             const movies = await Movie.find();
-            res.status(200)
-                .json(movies.reverses());
+            res.status(200).json(movies.reverse());
 
         } catch (err) {
             res.status(500).json(err);

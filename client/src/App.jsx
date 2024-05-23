@@ -10,8 +10,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 
 const App = () => {
-  // const { user } = useContext(AuthContext);
-  const user = true;
+  const { user } = useContext(AuthContext);
 
   return (
     <Router>
@@ -23,7 +22,7 @@ const App = () => {
 
         {user && (
           <>
-            <Route path="/movies" element={<Home type="movies" />} />
+            <Route path="/movies" element={<Home type="movie" />} />
             <Route path="/series" element={<Home type="series" />} />
             <Route path="/watch" element={<Watch />} />
           </>
