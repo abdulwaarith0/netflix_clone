@@ -44,7 +44,7 @@ const List = ({ list }) => {
                 />
                 <div className="container" ref={listRef}>
                     {list.content.map((item, i) => (
-                        <ListItem key={i} index={i} item={item}  />
+                        <ListItem key={i}  item={item}  />
                     ))};
 
                 </div>

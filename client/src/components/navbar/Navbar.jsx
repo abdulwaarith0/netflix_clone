@@ -24,29 +24,32 @@ const Navbar = () => {
         <div className={isScrolled ? "navbar   scrolled" : "navbar"}>
             <div className="container">
                 <div className="left">
-                    <img src={netflixImage}
-                        alt="" />
                     <Link to="/" className="link">
-                        <span>Home</span>
+                        <img src={netflixImage}
+                            alt="" />
+                    </Link>
+
+                    <Link to="/" className="link">
+                        <span className="navbarmainLinks">Home</span>
                     </Link>
                     <Link to="/series" className="link">
-                        <span>Series</span>
+                        <span className="navbarmainLinks">Series</span>
                     </Link>
                     <Link to="/movies" className="link">
-                        <span>Movies</span>
+                        <span className="navbarmainLinks">Movies</span>
                     </Link>
                     <span>News and Popular</span>
                     <span>My List</span>
                 </div>
                 <div className="right">
                     <Search className='icon' />
-                    <span>KID</span>
+                    <span className="icon">KID</span>
                     <Notifications className='icon' />
                     <img src={pexelsImage} alt=""
                     />
                     <div className="profile">
                         <ArrowDropDown
-                            className='icon' />
+                            className='icon_' />
                         <div
                             className="options">
                             <span>Settings</span>

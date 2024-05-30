@@ -5,7 +5,7 @@
     color: white;
     font-size: 14px;
     z-index: 999;
-    background: linear-gradient(to top, transparent 0%, rgb(0,0,0,0.3) 50%);
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
 
     &.scrolled {
         background-color: var(--main-color);
@@ -21,24 +21,48 @@
         .left {
             display: flex;
             align-items: center;
-    
-        img{
-            height: 40px;
-            margin-right: 40px;
-            
-        }   
-        span {
-            margin-right: 20px;
-            cursor: pointer;
+
+            img {
+                height: 40px;
+                margin-right: 40px;
+
+                @media (max-width: 450px) {
+                    display: none;
+                }
+            }
+
+            span {
+                margin-right: 20px;
+                cursor: pointer;
+
+                @media (max-width: 890px) {
+                    display: none;
+                }
+
+                &.navbarmainLinks {
+                    @media (max-width: 890px) {
+                        display: block;
+                    }
+                }
+            }
         }
 
-        }
 
         .right {
             display: flex;
             align-items: center;
 
+
             .icon {
+                margin: 0px 15px;
+                cursor: pointer;
+
+                @media (max-width: 450px) {
+                    display: none;
+                }
+            }
+
+            .icon_ {
                 margin: 0px 15px;
                 cursor: pointer;
             }
@@ -65,8 +89,9 @@
                         position: absolute;
                         padding: 10px;
                     }
-                    span{
-                        padding: 8px;
+
+                    span {
+                        padding: 6px;
                         cursor: pointer;
                     }
                 }

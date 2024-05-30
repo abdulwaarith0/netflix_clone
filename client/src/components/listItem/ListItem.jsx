@@ -10,7 +10,7 @@ const ListItem = ({ index, item }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [movie, setMovie] = useState({});
 
-    const getMovie = useCallback(async () => {
+    const getMovie = useCallback(async () =>  {
         try {
 
             const headers = {

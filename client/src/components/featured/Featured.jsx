@@ -35,13 +35,13 @@ const Featured = ({ type }) => {
                         {type === "movie" ?
                             "Movies" : "Series"}
                     </span>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre" >
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
                         <option value="crime">Crime</option>
                         <option value="fantasy">Fantasy</option>
-                        <option value="historical">Historical</option>
+                        <option value="historical">Action</option>
                         <option value="horror">Horror</option>
                         <option value="romance">Romance</option>
                         <option
@@ -56,13 +56,12 @@ const Featured = ({ type }) => {
             )}
             <img src={content.img} alt="" />
             <div className="info">
-                <img
+                {/* <img
                     src={content.imgTitle}
                     alt=""
-                />
+                /> */}
                 <span className='desc'>
                     {content.desc}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam, quibusdam tenetur dolore in reiciendis quia soluta deserunt saepe esse.
                 </span>
                 <div className="buttons">
                     <button className="play">

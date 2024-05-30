@@ -16,10 +16,6 @@ function Register() {
     const passwordRef = useRef();
     const usernameRef = useRef();
 
-    const handleLoginClick = () => {
-        navigate("/login")
-    }
-
     const handleStart = () => {
         setEmaiil(emailRef.current.value);
     }
@@ -44,12 +40,8 @@ function Register() {
                     <img className='logo'
                         src={netflixImg}
                         alt="" />
-                    <Link to="/"
-                        className="link">
-                        <span
-                            className="loginButton">
-                                Sign In
-                        </span>
+                    <Link to="/" className="link loginButton">
+                        Sign In
                     </Link>
 
                 </div>
