@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+  "start": "node dist/index.js",
+  "dev": "nodemon index.js",
+  "build": "babel . -d dist --ignore node_modules",
+  "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +22,10 @@
     "mongoose": "^8.3.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6"
   }
 }
