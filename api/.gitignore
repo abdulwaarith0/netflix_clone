@@ -1,6 +1,6 @@
 /node_modules
 /vite.config.js
-
+.env
 api/.env
 
 client/node_modules/.bin/

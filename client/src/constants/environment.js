@@ -1,1 +1,1 @@
-export const BASE_URL = "https://netflix-clone-ly4d.onrender.com";
+export const BASE_URL = "http://localhost:8800/api";
