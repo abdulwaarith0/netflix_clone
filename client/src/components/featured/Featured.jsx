@@ -60,6 +60,9 @@ const Featured = ({ type }) => {
                     src={content.imgTitle}
                     alt=""
                 /> */}
+                <h1>
+                    {content.title}
+                </h1>
                 <span className='desc'>
                     {content.desc}
                 </span>
