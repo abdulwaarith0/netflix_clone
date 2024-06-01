@@ -32,7 +32,7 @@
     }
 
     .info {
-        width: 40%;
+        width: 50%;
         position: absolute;
         left: 50px;
         bottom: 100px;
@@ -41,19 +41,14 @@
         flex-direction: column;
         margin-bottom: 8rem;
 
-        @media (max-width: 480px) {
-            .info {
-                width: 60%;
-            }
-        }
-
         img {
             width: 400px;
         }
 
         .desc {
             margin: 20px 0px;
-            font-size: 20px;
+            font-size: 23px;
+            font-weight: 600;
             margin-top: 2rem;
         }
 
