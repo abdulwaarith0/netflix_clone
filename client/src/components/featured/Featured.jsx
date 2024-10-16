@@ -60,7 +60,7 @@ const Featured = ({ type }) => {
                     src={content.imgTitle}
                     alt=""
                 /> */}
-                <h1 className='title'>
+                <h1 className="title">
                     {content.title}
                 </h1>
                 <span className='desc'>
